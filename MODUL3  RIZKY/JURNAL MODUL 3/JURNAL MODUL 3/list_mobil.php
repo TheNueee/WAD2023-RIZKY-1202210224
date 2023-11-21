@@ -13,16 +13,6 @@
     <center>
         <div class="container">
             <h1>List Mobil</h1>
-        <!-- <table class="table table-striped">
-            <tr>
-                <th scope='col'>id</th>         
-                <th scope='col'>Nama Mobil</th>
-                <th scope='col'>Brand Mobil</th>
-                <th scope='col'>Warna Mobil</th>
-                <th scope='col'>Tipe Mobil</th>
-                <th scope='col'>Harga Mobil</th>
-            </tr>
-        </table> -->
             <?php
             include("connect.php");
 
@@ -41,25 +31,19 @@
 
             //<!--  **********************  1  **************************     -->
 
-        if  ($row = $result > 0 ){
+        if  ($result->num_rows > 0){
+            echo '<table class="text-center" width=100% border="1" cellpadding="4"><tbody>';
             while ($row = $result -> fetch_assoc()){
-                echo
-                "<tr><td>".
-                $row['id'].
-                "<tr><td>".
-                $row['nama_mobil'].
-                "<tr><td>".
-                $row['brand_mobil'].
-                "<tr><td>".
-                $row['warna_mobil'].
-                "<tr><td>".
-                $row['tipe_mobil'].
-                "<tr><td>".
-                $row['harga_mobil'].
-                "<tr><td>"
-                <a href='form_detail_mobil.php? id=". $row[id]. "'button class='btn btn-primary id='detail'>DETAIL</a></td></tr>';
-            }
-            echo"</tbody></table>";
+                echo '<tr>
+                    <td>'. $row['nama_mobil']. '</td>
+                    <td>'. $row['brand_mobil']. '</td>
+                    <td>'. $row['warna_mobil']. '</td>
+                    <td>'. $row['tipe_mobil']. '</td>
+                    <td>'. $row['harga_mobil']. '</td>
+                    <td><a class="btn btn-primary" href="form_detail_mobil.php?id='.$row['id'].'">Lihat Detail</a></td>
+                    </tr>';
+                }
+            echo '</tbody></table>';
 
 
 
